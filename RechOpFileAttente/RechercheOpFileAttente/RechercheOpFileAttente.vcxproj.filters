@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RechOpFileAttente.c">
+    <ClCompile Include="main.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
