@@ -22,7 +22,7 @@ int main(void)
 int genererNbArrivees(void) {
 	int dureeService;
 	double nombre = (double)rand() / RAND_MAX;
-	printf("Test: Nombre généré: %f \n", nombre);
+	printf("Test: Nombre genere: %f \n", nombre);
 	dureeService = 8;
 	if (nombre < 0.111) {
 		dureeService = 0;
@@ -48,7 +48,7 @@ int genererNbArrivees(void) {
 	else if (nombre < 0.998) {
 		dureeService = 7;
 	}
-	printf("Test: Nombre de clients généré: %d\n", dureeService);
+	printf("Test: Nombre de clients genere: %d\n", dureeService);
 	return dureeService;
 }
 
@@ -56,7 +56,7 @@ int genererNbArrivees(void) {
 int genererDureeService(void) {
 	int dureeService;
 	int nombre = rand() % 59 + 1;
-	printf("Test: Nombre généré: %d \n", nombre);
+	printf("Test: Nombre genere: %d \n", nombre);
 	dureeService = 6;
 	if (nombre < 2) {
 		dureeService = 0;
@@ -73,7 +73,7 @@ int genererDureeService(void) {
 	else if (nombre < 35) {
 		dureeService = 4;
 	}
-	printf("Test: Durée de service générée: %d\n", dureeService);
+	printf("Test: Duree de service generee: %d\n", dureeService);
 	return dureeService;
 }
 
