@@ -4,6 +4,7 @@
 #include <time.h>
 
 int genererNbArrivees(void);
+int genererDureeService(void);
 
 int main(void)
 {
@@ -11,40 +12,68 @@ int main(void)
 	for (int i = 0; i < 10; i++) {
 		int nbClients = genererNbArrivees();
 	}
+	for (int i = 0; i < 10; i++) {
+		int dureeService = genererDureeService();
+	}
 	system("pause");
 	return EXIT_SUCCESS;
 }
 
 int genererNbArrivees(void) {
-	int nbClients;
+	int dureeService;
 	double nombre = (double)rand() / RAND_MAX;
 	printf("Test: Nombre généré: %f \n", nombre);
-	nbClients = 8;
+	dureeService = 8;
 	if (nombre < 0.111) {
-		nbClients = 0;
+		dureeService = 0;
 	}
 	else if (nombre < 0.355) {
-		nbClients = 1;
+		dureeService = 1;
 	}
 	else if (nombre < 0.623) {
-		nbClients = 2;
+		dureeService = 2;
 	}
 	else if (nombre < 0.819) {
-		nbClients = 3;
+		dureeService = 3;
 	}
 	else if (nombre < 0.927) {
-		nbClients = 4;
+		dureeService = 4;
 	}
 	else if (nombre < 0.975) {
-		nbClients = 5;
+		dureeService = 5;
 	}
 	else if (nombre < 0.992) {
-		nbClients = 6;
+		dureeService = 6;
 	}
 	else if (nombre < 0.998) {
-		nbClients = 7;
+		dureeService = 7;
 	}
-	printf("Test: Nombre de clients généré: %d\n", nbClients);
-	return nbClients;
+	printf("Test: Nombre de clients généré: %d\n", dureeService);
+	return dureeService;
+}
+
+
+int genererDureeService(void) {
+	int dureeService;
+	int nombre = rand() % 59 + 1;
+	printf("Test: Nombre généré: %d \n", nombre);
+	dureeService = 6;
+	if (nombre < 2) {
+		dureeService = 0;
+	}
+	else if (nombre < 5) {
+		dureeService = 1;
+	}
+	else if (nombre < 7) {
+		dureeService = 2;
+	}
+	else if (nombre < 17) {
+		dureeService = 3;
+	}
+	else if (nombre < 35) {
+		dureeService = 4;
+	}
+	printf("Test: Durée de service générée: %d\n", dureeService);
+	return dureeService;
 }
 
