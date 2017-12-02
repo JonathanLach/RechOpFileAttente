@@ -2,21 +2,44 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include<limits.h>
+
+#define A 69069
+#define C 0
+#define M INT_MAX+1
 
 int genererNbArrivees(void);
 int genererDureeService(void);
-
+double generationAleatoireZeroAUn(int *generationPrecedente);
+int generationAleatoire(int *generationPrecedente);
 int main(void)
 {
-	srand((unsigned int)time(NULL));
-	for (int i = 0; i < 10; i++) {
-		int nbClients = genererNbArrivees();
-	}
-	for (int i = 0; i < 10; i++) {
-		int dureeService = genererDureeService();
+	int generationPrecedente = 292;
+	double generation;
+	for (int i = 0; i < 100; i++)
+	{
+		generation = generationAleatoireZeroAUn(&generationPrecedente);
+		printf("Nombre genere: %f\n", generation);
 	}
 	system("pause");
 	return EXIT_SUCCESS;
+}
+
+int generationAleatoire(int *generationPrecedente)
+{	 
+	*generationPrecedente = (A*(*generationPrecedente) + C) % M;;
+	return *generationPrecedente;
+}
+
+double generationAleatoireZeroAUn(int *generationPrecedente)
+{
+	int rng = generationAleatoire(generationPrecedente);
+	double resultat = (double)rng / M;
+	if (resultat < 0)
+	{
+		resultat = resultat *(-1);
+	}
+	return resultat;
 }
 
 int genererNbArrivees(void) {
