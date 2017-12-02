@@ -6,7 +6,7 @@
 
 #define A 69069
 #define C 0
-#define M INT_MAX+1
+#define M INT_MAX
 
 int genererNbArrivees(void);
 int genererDureeService(void);
@@ -27,7 +27,7 @@ int main(void)
 
 int generationAleatoire(int *generationPrecedente)
 {	 
-	*generationPrecedente = (A*(*generationPrecedente) + C) % M;;
+	*generationPrecedente = (A*(*generationPrecedente) + C) % M;
 	return *generationPrecedente;
 }
 
