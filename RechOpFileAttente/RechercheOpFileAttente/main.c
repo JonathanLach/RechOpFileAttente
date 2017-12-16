@@ -8,7 +8,7 @@
 #define A 69069
 #define C 0
 #define GERME 292
-#define NBSTATIONSMIN 5
+#define NBSTATIONSMIN 2
 #define NBSTATIONSMAX 30
 #define TAILLEFILEEXPRESS 4
 #define TEMPSEJECTION 4
@@ -55,7 +55,6 @@ int main(void)
 {
 	double coutTotalMin = 100000000;
 	int meilleurNbStations;
-	int nbStations = NBSTATIONSMIN;
 	unsigned int generationPrecedente = GERME;
 	for (int nbStations = NBSTATIONSMIN; nbStations < NBSTATIONSMAX; nbStations++) {
 		Station tabStations[NBSTATIONSMAX];
@@ -71,21 +70,26 @@ int main(void)
 		for (int minute = 0; minute < 960; minute++) {
 			printf("Minute : %d\n", minute);
 			int nbClients = genererNbArrivees(&generationPrecedente);
-			printf("Nombre de clients: %d\n\n", nbClients);
 			for (int iClient = 0; iClient < nbClients; iClient++)
 			{
 				clientGenere = generationClient(&generationPrecedente);
 				repartirClient(clientGenere, tabStations, tabFileNormale, tabFileExpress, &nbClientsFileExpress, &nbClientsFileNormale, nbStations, &coutPassageClientExpressEnFileNormale);
 			}
 			traitementClients(nbStations, tabStations, &coutTotalPresenceClient, tabFileExpress, tabFileNormale, &nbClientsFileExpress, &nbClientsFileNormale);
-			printf("Etat de la file express:\n");
-			montrerFile(tabFileExpress, nbClientsFileExpress);
-			printf("Etat de la file normale:\n");
-			montrerFile(tabFileNormale, nbClientsFileNormale);
-			montrerTabStations(tabStations, nbStations);
+			if (nbStations == NBSTATIONSMIN || nbStations == 5) {
+				if (minute <= 30) {
+					printf("Nombre d'arrivees: %d\n\n", nbClients);
+					montrerTabStations(tabStations, nbStations);
+					printf("Etat de la file express:\n");
+					montrerFile(tabFileExpress, nbClientsFileExpress);
+					printf("Etat de la file normale:\n");
+					montrerFile(tabFileNormale, nbClientsFileNormale);
+				}
+			}
 			printf("-------------------- \n");
 			printf("-------------------- \n\n\n");
 		}
+
 
 		for (int i = 0; i < nbStations; i++) {
 			coutTotal += tabStations[i].coutTotalService;
@@ -93,6 +97,8 @@ int main(void)
 		coutTotal += (double)coutPassageClientExpressEnFileNormale;
 		coutTotal += coutTotalPresenceClient;
 		printf("Cout total de la station: %f\n", coutTotal);
+		printf("-------------------- \n");
+		printf("-------------------- \n\n\n");
 		if (coutTotal < coutTotalMin) {
 			coutTotalMin = coutTotal;
 			meilleurNbStations = nbStations;
@@ -104,7 +110,7 @@ int main(void)
 void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpress, int *nbClientsFileNormale)
 {
 	int iStation = 0;
-	while (iStation < nbStations)
+	while (iStation <= nbStations)
 	{
 		tabStations[iStation].coutTotalService = 0;
 		tabStations[iStation].clientServi.dureeServiceInitiale = 0;
@@ -121,7 +127,7 @@ void montrerFile(Client *file, int tailleFile)
 	int iFile = 0;
 	while (iFile < tailleFile)
 	{
-		printf("client %d : duree de service : %d, restant: %d, prioritaire : %d\n", iFile, file[iFile].dureeServiceInitiale, file[iFile].dureeServiceRestante, (file[iFile].estPrioritaire) ? 1 : 0);
+		printf("client %d : duree de service : %d, restant: %d, prioritaire : %d\n, type: %s\n", iFile, file[iFile].dureeServiceInitiale, file[iFile].dureeServiceRestante, (file[iFile].estPrioritaire) ? 1 : 0, (file[iFile].dureeServiceInitiale > 3)?"normal":"express");
 		iFile++;
 	}
 }
@@ -131,7 +137,7 @@ void montrerTabStations(Station *tabStations, int nbStations)
 	printf("Etat du tableau des stations:\n");
 	while (iStation < nbStations)
 	{
-		printf("Station %d : duree de service: %d, restant %d, prioritaire: %d\n", iStation, tabStations[iStation].clientServi.dureeServiceInitiale, tabStations[iStation].clientServi.dureeServiceRestante, (tabStations[iStation].clientServi.estPrioritaire)?1:0);
+		printf("Station %d : duree de service: %d, restant %d, prioritaire: %d\n, type: %s\n", iStation, tabStations[iStation].clientServi.dureeServiceInitiale, tabStations[iStation].clientServi.dureeServiceRestante, (tabStations[iStation].clientServi.estPrioritaire)?1:0, (tabStations[iStation].clientServi.dureeServiceInitiale > 3)?"normal":"express");
 		iStation++;
 	}
 }
