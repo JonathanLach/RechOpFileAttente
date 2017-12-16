@@ -77,7 +77,7 @@ int main(void)
 			traitementClients(nbStations, tabStations, &coutTotalPresenceClient, tabFileExpress, tabFileNormale, &nbClientsFileExpress, &nbClientsFileNormale);
 			if (nbStations == NBSTATIONSMIN || nbStations == 5) {
 				if (minute <= 30) {
-					printf("Nombre de stations: %d", nbStations);
+					printf("Nombre de stations: %d\n", nbStations);
 					printf("Minute : %d\n", minute);
 					printf("Nombre d'arrivees: %d\n\n", nbClients);
 					montrerTabStations(tabStations, nbStations);
