@@ -8,7 +8,7 @@
 #define A 69069
 #define C 0
 #define GERME 292
-#define NBSTATIONSMIN 3
+#define NBSTATIONSMIN 5
 #define NBSTATIONSMAX 30
 #define TAILLEFILEEXPRESS 4
 #define TEMPSEJECTION 4
@@ -75,7 +75,7 @@ int main(void)
 				repartirClient(clientGenere, tabStations, tabFileNormale, tabFileExpress, &nbClientsFileExpress, &nbClientsFileNormale, nbStations, &coutPassageClientExpressEnFileNormale);
 			}
 			traitementClients(nbStations, tabStations, &coutTotalPresenceClient, tabFileExpress, tabFileNormale, &nbClientsFileExpress, &nbClientsFileNormale);
-			if (nbStations == NBSTATIONSMIN || nbStations == 5) {
+			if (nbStations == NBSTATIONSMIN || nbStations == 6) {
 				if (minute <= 30) {
 					printf("Nombre de stations: %d\n", nbStations);
 					printf("Minute : %d\n", minute);
