@@ -43,6 +43,7 @@ void montrerFile(Client *file, int tailleFile);
 void montrerTabStations(Station *tabStations, int nbStations);
 void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpress, int *nbClientsFileNormale);
 void traitementStations(int nbStations, Station tabStations[], double  *coutTotalPresenceClient);
+void traitementClients(int nbStations, Station tabStations[], double *coutTotalPresenceClient, Client tabFileExpress[], Client tabFileNormale[], int * nbClientsFileExpress, int * nbClientsFileNormale);
 bool estLibre(Station tabStations[], int iStation);
 void traitementFileExpress(int nbStations, int * nbClientsFileExpress, Client tabFileExpress[], Station tabStations[], double  *coutTotalPresenceClient);
 void traitementFileNormale(int nbStations, Station tabStations[], int * nbClientsFileNormale, Client tabFileNormale[], double *coutTotalPresenceClient);
@@ -52,42 +53,52 @@ void suppressionClientFile(Station tabStations[], int iStation, Client tabFiles[
 
 int main(void)
 {
-	int nbStations = NBSTATIONSMIN;
 	double coutTotalMin = 100000000;
-	Station tabStations[NBSTATIONSMAX];
-	Client tabFileExpress[TAILLEFILEEXPRESS];
-	Client tabFileNormale[10000];
+	int meilleurNbStations;
+	int nbStations = NBSTATIONSMIN;
 	unsigned int generationPrecedente = GERME;
-	int nbClientsFileExpress = 0;
-	int nbClientsFileNormale = 0;
-	int coutPassageClientExpressEnFileNormale = 0;
-	double coutTotalPresenceClient = 0;
-	Client clientGenere;
-	initTableaux(tabStations, nbStations, &nbClientsFileExpress, &nbClientsFileNormale);
-	int minute = 0;
-	while (minute < 960) {
-		printf("Minute : %d\n", minute);
-		int iGeneration = 0;
-		int nbClients = genererNbArrivees(&generationPrecedente);
-		printf("Nombre de clients: %d\n\n", nbClients);
-		traitementFileExpress(nbStations, &nbClientsFileExpress, tabFileExpress, tabStations, &coutTotalPresenceClient);
-		traitementFileNormale(nbStations, tabStations, &nbClientsFileNormale, tabFileNormale, &coutTotalPresenceClient);
-		while (iGeneration < nbClients)
-		{
-			clientGenere = generationClient(&generationPrecedente);
-			repartirClient(clientGenere, tabStations, tabFileNormale, tabFileExpress, &nbClientsFileExpress, &nbClientsFileNormale, nbStations, &coutPassageClientExpressEnFileNormale);
-			iGeneration++;
+	for (int nbStations = NBSTATIONSMIN; nbStations < NBSTATIONSMAX; nbStations++) {
+		Station tabStations[NBSTATIONSMAX];
+		Client tabFileExpress[TAILLEFILEEXPRESS];
+		Client tabFileNormale[10000];
+		double coutTotal = 0;
+		int nbClientsFileExpress = 0;
+		int nbClientsFileNormale = 0;
+		int coutPassageClientExpressEnFileNormale = 0;
+		double coutTotalPresenceClient = 0;
+		Client clientGenere;
+		initTableaux(tabStations, nbStations, &nbClientsFileExpress, &nbClientsFileNormale);
+		for (int minute = 0; minute < 960; minute++) {
+			printf("Minute : %d\n", minute);
+			int nbClients = genererNbArrivees(&generationPrecedente);
+			printf("Nombre de clients: %d\n\n", nbClients);
+			for (int iClient = 0; iClient < nbClients; iClient++)
+			{
+				clientGenere = generationClient(&generationPrecedente);
+				repartirClient(clientGenere, tabStations, tabFileNormale, tabFileExpress, &nbClientsFileExpress, &nbClientsFileNormale, nbStations, &coutPassageClientExpressEnFileNormale);
+			}
+			traitementClients(nbStations, tabStations, &coutTotalPresenceClient, tabFileExpress, tabFileNormale, &nbClientsFileExpress, &nbClientsFileNormale);
+			printf("Etat de la file express:\n");
+			montrerFile(tabFileExpress, nbClientsFileExpress);
+			printf("Etat de la file normale:\n");
+			montrerFile(tabFileNormale, nbClientsFileNormale);
+			montrerTabStations(tabStations, nbStations);
+			printf("-------------------- \n");
+			printf("-------------------- \n\n\n");
 		}
-		traitementStations(nbStations, tabStations, &coutTotalPresenceClient);
-		printf("Etat de la file express:\n");
-		montrerFile(tabFileExpress, nbClientsFileExpress);
-		printf("Etat de la file normale:\n");
-		montrerFile(tabFileNormale, nbClientsFileNormale);
-		montrerTabStations(tabStations, nbStations);
-		printf("-------------------- \n");
-		printf("-------------------- \n\n\n");
-		minute++;
+
+		for (int i = 0; i < nbStations; i++) {
+			coutTotal += tabStations[i].coutTotalService;
+		}
+		coutTotal += (double)coutPassageClientExpressEnFileNormale;
+		coutTotal += coutTotalPresenceClient;
+		printf("Cout total de la station: %f\n", coutTotal);
+		if (coutTotal < coutTotalMin) {
+			coutTotalMin = coutTotal;
+			meilleurNbStations = nbStations;
+		}
 	}
+	printf("Nombre de stations optimal: %d\n", meilleurNbStations);
 	system("pause");
 }
 void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpress, int *nbClientsFileNormale)
@@ -110,7 +121,7 @@ void montrerFile(Client *file, int tailleFile)
 	int iFile = 0;
 	while (iFile < tailleFile)
 	{
-		printf("client %d : duree de service : %d, restant: %d, prioritaire : %d\n", iFile, file[iFile].dureeServiceInitiale, file[iFile].dureeServiceRestante, file[iFile].estPrioritaire);
+		printf("client %d : duree de service : %d, restant: %d, prioritaire : %d\n", iFile, file[iFile].dureeServiceInitiale, file[iFile].dureeServiceRestante, (file[iFile].estPrioritaire) ? 1 : 0);
 		iFile++;
 	}
 }
@@ -120,7 +131,7 @@ void montrerTabStations(Station *tabStations, int nbStations)
 	printf("Etat du tableau des stations:\n");
 	while (iStation < nbStations)
 	{
-		printf("Station %d : duree de service: %d, restant %d, prioritaire: %d\n", iStation, tabStations[iStation].clientServi.dureeServiceInitiale, tabStations[iStation].clientServi.dureeServiceRestante, tabStations[iStation].clientServi.estPrioritaire);
+		printf("Station %d : duree de service: %d, restant %d, prioritaire: %d\n", iStation, tabStations[iStation].clientServi.dureeServiceInitiale, tabStations[iStation].clientServi.dureeServiceRestante, (tabStations[iStation].clientServi.estPrioritaire)?1:0);
 		iStation++;
 	}
 }
@@ -287,6 +298,12 @@ int genererDureeService(unsigned int *generationPrecedente) {
 	}
 	//printf("Test: Duree de service generee: %d\n", dureeService);
 	return dureeService;
+}
+
+void traitementClients(int nbStations, Station tabStations[], double *coutTotalPresenceClient, Client tabFileExpress[], Client tabFileNormale[], int * nbClientsFileExpress, int * nbClientsFileNormale) {
+	traitementStations(nbStations, tabStations, coutTotalPresenceClient);
+	traitementFileExpress(nbStations, nbClientsFileExpress, tabFileExpress, tabStations, coutTotalPresenceClient);
+	traitementFileNormale(nbStations, tabStations, nbClientsFileNormale, tabFileNormale, coutTotalPresenceClient);
 }
 
 void traitementStations(int nbStations, Station tabStations[], double  *coutTotalPresenceClient) {
