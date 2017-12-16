@@ -313,6 +313,53 @@ void traitementStations(int nbStations, Station tabStations[], double  *coutTota
 	}
 }
 
+void traitementFileNormale(int nbStations, Station tabStations[], int * nbClientsFileNormale, Client tabFileNormale[], double *coutTotalPresenceClient) {
+	int iFileNormale = 0;
+	int iStation;
+	bool possibiliteStationLibre = true;
+	while (iFileNormale < *nbClientsFileNormale) {
+		if (possibiliteStationLibre) {
+			iStation = 0;
+			while (iStation < nbStations && !estLibre(tabStations, iStation)) {
+				iStation++;
+			}
+			if (iStation == nbStations) {
+				possibiliteStationLibre = false;
+			}
+		}
+
+		if (tabFileNormale[iFileNormale].dureeServiceInitiale <= 3) {
+			*coutTotalPresenceClient += 37.5 / 60;
+			if (!possibiliteStationLibre && iFileNormale == 0) {
+				int iStation = 0;
+				while (iStation < nbStations && tabStations[iStation].clientServi.dureeServiceRestante < 5 && tabStations[iStation].clientServi.estPrioritaire) {
+					iStation++;
+				}
+
+				if (iStation != nbStations) {
+					Client clientMemorise = tabFileNormale[iFileNormale];
+					tabFileNormale[iFileNormale] = tabStations[iStation].clientServi;
+					clientMemorise.estPrioritaire = true;
+					tabStations[iStation].clientServi = clientMemorise;
+				}
+			}
+			else {
+				if (tabFileNormale[iFileNormale].estPrioritaire) {
+					*coutTotalPresenceClient += 42.5 / 60;
+				}
+				else {
+					*coutTotalPresenceClient += 25.5 / 60;
+				}
+			}
+		}
+		if (possibiliteStationLibre) {
+			suppressionClientFile(tabStations, iStation, tabFileNormale, nbClientsFileNormale);
+		}
+		iFileNormale++;
+	}
+}
+
+
 void traitementFileExpress(int nbStations, int * nbClientsFileExpress, Client tabFileExpress[], Station tabStations[], double  *coutTotalPresenceClient) {
 	int iFileExpress = 0;
 	bool possibiliteStationLibre = true;
@@ -333,6 +380,8 @@ void traitementFileExpress(int nbStations, int * nbClientsFileExpress, Client ta
 		iFileExpress++;
 	}
 }
+
+
 
 void suppressionClientFile(Station tabStations[], int iStation, Client *tabFiles, int * tailleFille) {
 	tabStations[iStation].clientServi = tabFiles[0];
