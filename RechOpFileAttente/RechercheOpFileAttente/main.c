@@ -361,8 +361,8 @@ void traitementFileNormale(int nbStations, Station tabStations[], int * nbClient
 
 				if (iStation != nbStations) {
 					Client clientMemorise = tabFileNormale[iFileNormale];
+					tabStations[iStation].clientServi.estPrioritaire = true;
 					tabFileNormale[iFileNormale] = tabStations[iStation].clientServi;
-					clientMemorise.estPrioritaire = true;
 					tabStations[iStation].clientServi = clientMemorise;
 				}
 			}
