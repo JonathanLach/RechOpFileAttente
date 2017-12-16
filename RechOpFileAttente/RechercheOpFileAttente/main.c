@@ -407,7 +407,7 @@ void traitementFileExpress(int nbStations, int * nbClientsFileExpress, Client ta
 
 
 
-void suppressionClientFile(Station tabStations[], int iStation, Client *tabFiles, int * tailleFille) {
+void suppressionClientFile(Station tabStations[], int iStation, Client tabFiles[], int * tailleFille) {
 	tabStations[iStation].clientServi = tabFiles[0];
 
 	for (int i = 0; i < *tailleFille - 1; i++) {
