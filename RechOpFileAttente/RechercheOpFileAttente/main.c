@@ -8,7 +8,7 @@
 #define A 69069
 #define C 0
 #define GERME 292
-#define NBSTATIONSMIN 2
+#define NBSTATIONSMIN 3
 #define NBSTATIONSMAX 30
 #define TAILLEFILEEXPRESS 4
 #define TEMPSEJECTION 4
@@ -68,7 +68,6 @@ int main(void)
 		Client clientGenere;
 		initTableaux(tabStations, nbStations, &nbClientsFileExpress, &nbClientsFileNormale);
 		for (int minute = 0; minute < 960; minute++) {
-			printf("Minute : %d\n", minute);
 			int nbClients = genererNbArrivees(&generationPrecedente);
 			for (int iClient = 0; iClient < nbClients; iClient++)
 			{
@@ -78,6 +77,8 @@ int main(void)
 			traitementClients(nbStations, tabStations, &coutTotalPresenceClient, tabFileExpress, tabFileNormale, &nbClientsFileExpress, &nbClientsFileNormale);
 			if (nbStations == NBSTATIONSMIN || nbStations == 5) {
 				if (minute <= 30) {
+					printf("Nombre de stations: %d", nbStations);
+					printf("Minute : %d\n", minute);
 					printf("Nombre d'arrivees: %d\n\n", nbClients);
 					montrerTabStations(tabStations, nbStations);
 					printf("Etat de la file express:\n");
