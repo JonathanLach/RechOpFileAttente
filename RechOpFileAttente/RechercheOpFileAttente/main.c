@@ -53,7 +53,7 @@ void suppressionClientFile(Station tabStations[], int iStation, Client tabFiles[
 
 int main(void)
 {
-	double coutTotalMin = 100000000;
+	double coutTotalMin = 10000000000000000000;
 	int meilleurNbStations;
 	unsigned int generationPrecedente = GERME;
 	for (int nbStations = NBSTATIONSMIN; nbStations < NBSTATIONSMAX; nbStations++) {
@@ -111,7 +111,7 @@ int main(void)
 void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpress, int *nbClientsFileNormale)
 {
 	int iStation = 0;
-	while (iStation <= nbStations)
+	while (iStation < nbStations)
 	{
 		tabStations[iStation].coutTotalService = 0;
 		tabStations[iStation].clientServi.dureeServiceInitiale = 0;
