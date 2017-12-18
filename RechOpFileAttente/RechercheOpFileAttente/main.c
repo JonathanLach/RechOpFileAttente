@@ -18,6 +18,7 @@
 #define REPETITIONDS4 10
 #define REPETITIONDS5 18
 #define REPETITIONDS6 24
+
 typedef struct client
 {
 	bool estPrioritaire;
@@ -30,6 +31,14 @@ typedef struct station
 	Client clientServi;
 }Station;
 
+typedef struct cout {
+	int coutTotalPassageClientExpressEnFileNormale;
+	double coutTotalService;
+	double coutTotalPresenceClient;
+	double coutTotal;
+}Cout;
+
+void montrerResumeCout(FILE * sorties, int nbStations, int coutTotalPassageClientExpressEnFileNormale, double coutTotalService, double coutTotalPresenceClient, double coutTotal);
 int genererNbArrivees(unsigned int *generationPrecedente);
 int genererDureeService(unsigned int *generationPrecedente);
 double generationAleatoireZeroAUn(unsigned int *generationPrecedente);
@@ -56,9 +65,10 @@ int main(void)
 	double coutTotalMin = 10000000000000000000;
 	int meilleurNbStations;
 	FILE * sorties;
+	Cout tabCouts[NBSTATIONSMAX];
 	fopen_s(&sorties, "sorties.txt", "w");
 	unsigned int generationPrecedente = GERME;
-	for (int nbStations = NBSTATIONSMIN; nbStations < NBSTATIONSMAX; nbStations++) {
+	for (int nbStations = NBSTATIONSMIN; nbStations <= NBSTATIONSMAX; nbStations++) {
 		Station tabStations[NBSTATIONSMAX];
 		Client tabFileExpress[TAILLEFILEEXPRESS];
 		Client tabFileNormale[10000];
@@ -98,12 +108,15 @@ int main(void)
 		coutTotal += (double)coutPassageClientExpressEnFileNormale;
 		coutTotal += coutTotalPresenceClient;
 		coutTotal += coutTotalService;
-		fprintf(sorties, "___________ Résumé des coûts pour la simulation à %d stations____________\n", nbStations);
-		fprintf(sorties, "Cout total de service: %f\n", coutTotalService);
-		fprintf(sorties, "Cout total de presence client: %f\n", coutTotalPresenceClient);
-		fprintf(sorties, "Cout total de passage des clients express en file normale: %d\n", coutPassageClientExpressEnFileNormale);
-		fprintf(sorties, "Cout total de la station: %f\n", coutTotal);
-		fprintf(sorties, "_________________________________________________________________________\n");
+		tabCouts[nbStations - NBSTATIONSMIN].coutTotalPassageClientExpressEnFileNormale = coutPassageClientExpressEnFileNormale;
+		tabCouts[nbStations - NBSTATIONSMIN].coutTotal = coutTotal;
+		tabCouts[nbStations - NBSTATIONSMIN].coutTotalPresenceClient = coutTotalPresenceClient;
+		tabCouts[nbStations - NBSTATIONSMIN].coutTotalService = coutTotalService;
+		if (nbStations == NBSTATIONSMIN || nbStations == 6) {
+
+			montrerResumeCout(sorties, nbStations, coutPassageClientExpressEnFileNormale, coutTotalService, coutTotalPresenceClient, coutTotal);
+			fprintf(sorties, "\n");
+		}
 		if (coutTotal < coutTotalMin) {
 			coutTotalMin = coutTotal;
 			meilleurNbStations = nbStations;
@@ -113,8 +126,18 @@ int main(void)
 	fprintf(sorties, "******************************\n******************************\n\n");
 	fprintf(sorties, "Nombre de stations optimal: %d\n", meilleurNbStations);
 	fprintf(sorties, "\n\n******************************\n******************************\n\n");
+
+	fprintf(sorties, "\n\n\n");
+	fprintf(sorties, "******************************\n");
+	fprintf(sorties, "Résumé des coûts pour chaque simulation:\n");
+	fprintf(sorties, "******************************\n\n");
+
+	for (int i = 0; i <= NBSTATIONSMAX - NBSTATIONSMIN; i++) {
+		montrerResumeCout(sorties, i + NBSTATIONSMIN, tabCouts[i].coutTotalPassageClientExpressEnFileNormale, tabCouts[i].coutTotalService, tabCouts[i].coutTotalPresenceClient, tabCouts[i].coutTotal);
+	}
 	system("pause");
 }
+
 void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpress, int *nbClientsFileNormale)
 {
 	int iStation = 0;
@@ -128,6 +151,15 @@ void initTableaux(Station *tabStations, int nbStations, int *nbClientsFileExpres
 	}
 	*nbClientsFileExpress = 0;
 	*nbClientsFileNormale = 0;
+}
+
+void montrerResumeCout(FILE * sorties, int nbStations, int coutTotalPassageClientExpressEnFileNormale, double coutTotalService, double coutTotalPresenceClient, double coutTotal) {
+	fprintf(sorties, "___________ Résumé des coûts pour la simulation à %d stations____________\n", nbStations);
+	fprintf(sorties, "Cout total de service: %.2f €\n", coutTotalService);
+	fprintf(sorties, "Cout total de présence client: %.2f €\n", coutTotalPresenceClient);
+	fprintf(sorties, "Cout total de passage des clients express en file normale: %d  €\n", coutTotalPassageClientExpressEnFileNormale);
+	fprintf(sorties, "Cout total de la station: %.2f  €\n", coutTotal);
+	fprintf(sorties, "_________________________________________________________________________\n");
 }
 
 void montrerFile(Client *file, int tailleFile, FILE * f, char * typeFile)
@@ -419,7 +451,7 @@ void traitementFileNormale(int nbStations, Station tabStations[], int * nbClient
 			*coutTotalPresenceClient += 37.5 / 60;
 			if (!possibiliteStationLibre && iFileNormale == 0) {
 				int iStation = 0;
-				while (iStation < nbStations && tabStations[iStation].clientServi.dureeServiceRestante < 5 && tabStations[iStation].clientServi.estPrioritaire) {
+				while (iStation < nbStations && tabStations[iStation].clientServi.dureeServiceRestante < TEMPSEJECTION && tabStations[iStation].clientServi.estPrioritaire) {
 					iStation++;
 				}
 

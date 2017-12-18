@@ -820,11 +820,12 @@ Tableau de la file normale:
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ___________ Résumé des coûts pour la simulation à 5 stations____________
-Cout total de service: 3.900000
-Cout total de presence client: 3781.858333
-Cout total de passage des clients express en file normale: 700
-Cout total de la station: 4485.758333
+Cout total de service: 2397.40 €
+Cout total de présence client: 3781.86 €
+Cout total de passage des clients express en file normale: 700  €
+Cout total de la station: 6879.26  €
 _________________________________________________________________________
+
 *********************
 Nombre de stations: 6
 *********************
@@ -1615,149 +1616,12 @@ Tableau de la file normale:
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ___________ Résumé des coûts pour la simulation à 6 stations____________
-Cout total de service: 3.000000
-Cout total de presence client: 4090.816667
-Cout total de passage des clients express en file normale: 735
-Cout total de la station: 4828.816667
+Cout total de service: 2878.00 €
+Cout total de présence client: 4090.82 €
+Cout total de passage des clients express en file normale: 735  €
+Cout total de la station: 7703.82  €
 _________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 7 stations____________
-Cout total de service: 2.400000
-Cout total de presence client: 4401.550000
-Cout total de passage des clients express en file normale: 660
-Cout total de la station: 5063.950000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 8 stations____________
-Cout total de service: 200.100000
-Cout total de presence client: 4245.641667
-Cout total de passage des clients express en file normale: 315
-Cout total de la station: 4760.741667
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 9 stations____________
-Cout total de service: 484.200000
-Cout total de presence client: 4183.458333
-Cout total de passage des clients express en file normale: 245
-Cout total de la station: 4912.658333
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 10 stations____________
-Cout total de service: 752.400000
-Cout total de presence client: 4102.900000
-Cout total de passage des clients express en file normale: 55
-Cout total de la station: 4910.300000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 11 stations____________
-Cout total de service: 1064.700000
-Cout total de presence client: 3988.058333
-Cout total de passage des clients express en file normale: 40
-Cout total de la station: 5092.758333
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 12 stations____________
-Cout total de service: 1330.500000
-Cout total de presence client: 4019.050000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 5349.550000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 13 stations____________
-Cout total de service: 1666.500000
-Cout total de presence client: 3982.950000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 5649.450000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 14 stations____________
-Cout total de service: 1878.300000
-Cout total de presence client: 4107.825000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 5986.125000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 15 stations____________
-Cout total de service: 2133.600000
-Cout total de presence client: 4107.625000
-Cout total de passage des clients express en file normale: 10
-Cout total de la station: 6251.225000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 16 stations____________
-Cout total de service: 2479.200000
-Cout total de presence client: 4156.350000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 6635.550000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 17 stations____________
-Cout total de service: 2737.500000
-Cout total de presence client: 4167.975000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 6905.475000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 18 stations____________
-Cout total de service: 2968.500000
-Cout total de presence client: 4262.800000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 7231.300000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 19 stations____________
-Cout total de service: 3309.900000
-Cout total de presence client: 4092.525000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 7402.425000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 20 stations____________
-Cout total de service: 3627.300000
-Cout total de presence client: 4062.525000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 7689.825000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 21 stations____________
-Cout total de service: 3919.200000
-Cout total de presence client: 4096.300000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 8015.500000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 22 stations____________
-Cout total de service: 4151.700000
-Cout total de presence client: 4130.250000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 8281.950000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 23 stations____________
-Cout total de service: 4463.700000
-Cout total de presence client: 4053.925000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 8517.625000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 24 stations____________
-Cout total de service: 4815.000000
-Cout total de presence client: 3967.125000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 8782.125000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 25 stations____________
-Cout total de service: 5025.900000
-Cout total de presence client: 4123.225000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 9149.125000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 26 stations____________
-Cout total de service: 5297.100000
-Cout total de presence client: 4126.300000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 9423.400000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 27 stations____________
-Cout total de service: 5649.600000
-Cout total de presence client: 4021.250000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 9670.850000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 28 stations____________
-Cout total de service: 5958.600000
-Cout total de presence client: 3971.750000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 9930.350000
-_________________________________________________________________________
-___________ Résumé des coûts pour la simulation à 29 stations____________
-Cout total de service: 6270.300000
-Cout total de presence client: 4007.700000
-Cout total de passage des clients express en file normale: 0
-Cout total de la station: 10278.000000
-_________________________________________________________________________
+
 
 
 
@@ -1770,3 +1634,166 @@ Nombre de stations optimal: 5
 ******************************
 ******************************
 
+
+
+
+******************************
+Résumé des coûts pour chaque simulation:
+******************************
+
+___________ Résumé des coûts pour la simulation à 5 stations____________
+Cout total de service: 2397.40 €
+Cout total de présence client: 3781.86 €
+Cout total de passage des clients express en file normale: 700  €
+Cout total de la station: 6879.26  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 6 stations____________
+Cout total de service: 2878.00 €
+Cout total de présence client: 4090.82 €
+Cout total de passage des clients express en file normale: 735  €
+Cout total de la station: 7703.82  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 7 stations____________
+Cout total de service: 3358.40 €
+Cout total de présence client: 4401.55 €
+Cout total de passage des clients express en file normale: 660  €
+Cout total de la station: 8419.95  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 8 stations____________
+Cout total de service: 3706.60 €
+Cout total de présence client: 4245.64 €
+Cout total de passage des clients express en file normale: 315  €
+Cout total de la station: 8267.24  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 9 stations____________
+Cout total de service: 3997.20 €
+Cout total de présence client: 4183.46 €
+Cout total de passage des clients express en file normale: 245  €
+Cout total de la station: 8425.66  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 10 stations____________
+Cout total de service: 4298.40 €
+Cout total de présence client: 4102.90 €
+Cout total de passage des clients express en file normale: 55  €
+Cout total de la station: 8456.30  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 11 stations____________
+Cout total de service: 4570.20 €
+Cout total de présence client: 3988.06 €
+Cout total de passage des clients express en file normale: 40  €
+Cout total de la station: 8598.26  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 12 stations____________
+Cout total de service: 4873.00 €
+Cout total de présence client: 4019.05 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 8892.05  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 13 stations____________
+Cout total de service: 5129.00 €
+Cout total de présence client: 3982.95 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 9111.95  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 14 stations____________
+Cout total de service: 5467.80 €
+Cout total de présence client: 4107.83 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 9575.63  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 15 stations____________
+Cout total de service: 5777.60 €
+Cout total de présence client: 4107.63 €
+Cout total de passage des clients express en file normale: 10  €
+Cout total de la station: 9895.23  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 16 stations____________
+Cout total de service: 6027.20 €
+Cout total de présence client: 4156.35 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 10183.55  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 17 stations____________
+Cout total de service: 6335.00 €
+Cout total de présence client: 4167.98 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 10502.98  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 18 stations____________
+Cout total de service: 6661.00 €
+Cout total de présence client: 4262.80 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 10923.80  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 19 stations____________
+Cout total de service: 6913.40 €
+Cout total de présence client: 4092.53 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 11005.93  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 20 stations____________
+Cout total de service: 7181.80 €
+Cout total de présence client: 4062.53 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 11244.33  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 21 stations____________
+Cout total de service: 7467.20 €
+Cout total de présence client: 4096.30 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 11563.50  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 22 stations____________
+Cout total de service: 7792.20 €
+Cout total de présence client: 4130.25 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 11922.45  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 23 stations____________
+Cout total de service: 8064.20 €
+Cout total de présence client: 4053.93 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 12118.13  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 24 stations____________
+Cout total de service: 8310.00 €
+Cout total de présence client: 3967.13 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 12277.13  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 25 stations____________
+Cout total de service: 8649.40 €
+Cout total de présence client: 4123.23 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 12772.63  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 26 stations____________
+Cout total de service: 8948.60 €
+Cout total de présence client: 4126.30 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 13074.90  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 27 stations____________
+Cout total de service: 9193.60 €
+Cout total de présence client: 4021.25 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 13214.85  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 28 stations____________
+Cout total de service: 9467.60 €
+Cout total de présence client: 3971.75 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 13439.35  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 29 stations____________
+Cout total de service: 9739.80 €
+Cout total de présence client: 4007.70 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 13747.50  €
+_________________________________________________________________________
+___________ Résumé des coûts pour la simulation à 30 stations____________
+Cout total de service: 10110.40 €
+Cout total de présence client: 4158.13 €
+Cout total de passage des clients express en file normale: 0  €
+Cout total de la station: 14268.53  €
+_________________________________________________________________________
