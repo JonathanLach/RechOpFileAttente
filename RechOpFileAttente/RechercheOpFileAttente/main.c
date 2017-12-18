@@ -382,6 +382,7 @@ void traitementStations(int nbStations, Station tabStations[], double  *coutTota
 			tabStations[iStation].coutTotalService += 18. / 60;
 		}
 		else {
+			tabStations[iStation].coutTotalService += 30. / 60;
 			if (tabStations[iStation].clientServi.estPrioritaire) {
 				*coutTotalPresenceClient += 42.5 / 60;
 			}
